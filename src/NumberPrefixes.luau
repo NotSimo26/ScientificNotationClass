@@ -1,7 +1,7 @@
 -- Put inside ScientificNotationClass.luau
-local NumberSuffixes = {}
+local NumberPrefixes = {}
 
-NumberSuffixes.baseSuffixes = {
+NumberPrefixes.basePrefixes = {
 	"m",
 	"b",
 	"tr",
@@ -12,7 +12,7 @@ NumberSuffixes.baseSuffixes = {
 	"oct",
 	"non"
 }
-NumberSuffixes.latinUnits = {
+NumberPrefixes.latinUnits = {
 	"un",
 	"duo",
 	"tre",
@@ -23,7 +23,7 @@ NumberSuffixes.latinUnits = {
 	"octo",
 	"nove"
 }
-NumberSuffixes.latinTens = {
+NumberPrefixes.latinTens = {
 	"deci",
 	"viginti",
 	"triginta",
@@ -34,7 +34,7 @@ NumberSuffixes.latinTens = {
 	"octoginta",
 	"nonaginta"
 }
-NumberSuffixes.latinHundreds = {
+NumberPrefixes.latinHundreds = {
 	"centi",
 	"ducenti",
 	"trecenti",
@@ -49,7 +49,7 @@ NumberSuffixes.latinHundreds = {
 
 -- Short
 
-NumberSuffixes.baseSuffixesShort = {
+NumberPrefixes.basePrefixesShort = {
 	"M",
 	"B",
 	"T",
@@ -60,7 +60,7 @@ NumberSuffixes.baseSuffixesShort = {
 	"Oc",
 	"No"
 }
-NumberSuffixes.latinUnitsShort = {
+NumberPrefixes.latinUnitsShort = {
 	"U",
 	"D",
 	"T",
@@ -71,7 +71,7 @@ NumberSuffixes.latinUnitsShort = {
 	"Oc",
 	"No"
 }
-NumberSuffixes.latinTensShort = {
+NumberPrefixes.latinTensShort = {
 	"Dc",
 	"Vg",
 	"Tg",
@@ -82,7 +82,7 @@ NumberSuffixes.latinTensShort = {
 	"Og",
 	"Ng"
 }
-NumberSuffixes.latinHundredsShort = {
+NumberPrefixes.latinHundredsShort = {
 	"C",
 	"DuC",
 	"TrC",
@@ -97,37 +97,37 @@ NumberSuffixes.latinHundredsShort = {
 -- lookup tables useful to check if i should add the addons
 -- like "s" at the end of "tre" or "se"
 
-NumberSuffixes.hasS = {
+NumberPrefixes.hasS = {
 	-- Tens
 	viginti = true, 
 	triginta = true, 
 	quadraginta = true, 
 	quinquaginta = true,
-	
+
 	-- Hundreds
 	trecenti = true, 
 	quadringenti = true, 
 	quingenti = true
 }
 
-NumberSuffixes.hasX = {
+NumberPrefixes.hasX = {
 	-- Tens
 	octoginta = true,
-	
+
 	-- Hundreds
 	centi = true, 
 	octingenti = true
 }
 
-NumberSuffixes.hasM = {
+NumberPrefixes.hasM = {
 	-- Tens
 	octoginta = true,
-	
+
 	-- Hundreds
 	octingenti = true
 }
 
-NumberSuffixes.hasN = {
+NumberPrefixes.hasN = {
 	-- Tens
 	deci = true, 
 	triginta = true, 
@@ -135,7 +135,7 @@ NumberSuffixes.hasN = {
 	quinquaginta = true, 
 	sexaginta = true, 
 	septuaginta = true,
-	
+
 	-- Hundreds
 	centi = true, 
 	ducenti = true, 
@@ -147,12 +147,12 @@ NumberSuffixes.hasN = {
 }
 
 
-NumberSuffixes.addons = {
-	s = NumberSuffixes.hasS,
-	x = NumberSuffixes.hasX,
-	m = NumberSuffixes.hasM,
-	n = NumberSuffixes.hasN
+NumberPrefixes.addons = {
+	s = NumberPrefixes.hasS,
+	x = NumberPrefixes.hasX,
+	m = NumberPrefixes.hasM,
+	n = NumberPrefixes.hasN
 }
 
 
-return NumberSuffixes
+return NumberPrefixes
