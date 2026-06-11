@@ -4,7 +4,7 @@
 -- @type: Class
 
 -- <<< Modules >>> -- 
-local NumberSuffixes			= require(script.NumberSuffixes)
+local NumberPrefixes			= require(script.NumberPrefixes)
 
 -- <<< Local Functions >>> --
 local function round3(value: number): number
@@ -27,13 +27,13 @@ end
 local function getModifiedUnit(unit:string, nextComponent:string)
 	if not nextComponent or nextComponent == "" then return unit end
 	if unit == "tre" then
-		if NumberSuffixes.addons.s[nextComponent] then return "tres" end
+		if NumberPrefixes.addons.s[nextComponent] then return "tres" end
 	elseif unit == "se" then
-		if NumberSuffixes.addons.x[nextComponent] then return "sex" end
-		if NumberSuffixes.addons.s[nextComponent] then return "ses" end
+		if NumberPrefixes.addons.x[nextComponent] then return "sex" end
+		if NumberPrefixes.addons.s[nextComponent] then return "ses" end
 	elseif unit == "septe" or unit == "nove" then
-		if NumberSuffixes.addons.m[nextComponent] then return unit .. "m" end
-		if NumberSuffixes.addons.n[nextComponent] then return unit .. "n" end
+		if NumberPrefixes.addons.m[nextComponent] then return unit .. "m" end
+		if NumberPrefixes.addons.n[nextComponent] then return unit .. "n" end
 	end
 	return unit
 end
@@ -45,21 +45,21 @@ local function elaborateGroup(conwayIndex:number, suffix:string): (string, strin
 		res = "n" .. suffix
 	elseif conwayIndex < 10 then
 		-- standard nomenclature
-		res = NumberSuffixes.baseSuffixes[conwayIndex] .. suffix
-		shortRes = NumberSuffixes.baseSuffixesShort[conwayIndex]
+		res = NumberPrefixes.basePrefixes[conwayIndex] .. suffix
+		shortRes = NumberPrefixes.basePrefixesShort[conwayIndex]
 	elseif conwayIndex < 1000 then
 		-- 10 <= N < 1000
 		local hundredIndex = math.floor(conwayIndex / 100)
 		local tenIndex = math.floor((conwayIndex % 100) / 10)
 		local unitIndex = conwayIndex % 10
 		--
-		local hundred = NumberSuffixes.latinHundreds[hundredIndex] or ""
-		local ten = NumberSuffixes.latinTens[tenIndex] or ""
-		local unit = NumberSuffixes.latinUnits[unitIndex] or ""
+		local hundred = NumberPrefixes.latinHundreds[hundredIndex] or ""
+		local ten = NumberPrefixes.latinTens[tenIndex] or ""
+		local unit = NumberPrefixes.latinUnits[unitIndex] or ""
 		--
-		local hundredShort = NumberSuffixes.latinHundredsShort[hundredIndex] or ""
-		local tenShort = NumberSuffixes.latinTensShort[tenIndex] or ""
-		local unitShort = NumberSuffixes.latinUnitsShort[unitIndex] or ""
+		local hundredShort = NumberPrefixes.latinHundredsShort[hundredIndex] or ""
+		local tenShort = NumberPrefixes.latinTensShort[tenIndex] or ""
+		local unitShort = NumberPrefixes.latinUnitsShort[unitIndex] or ""
 		--
 		-- If there's ten i'll use that as next, otherwise i'll use hundred
 		unit = getModifiedUnit(unit, (ten~="") and ten or hundred)
