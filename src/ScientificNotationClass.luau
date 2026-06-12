@@ -43,6 +43,7 @@ local function elaborateGroup(conwayIndex:number, suffix:string): (string, strin
 	if conwayIndex < 0 then
 	elseif conwayIndex == 0 then
 		res = "n" .. suffix
+		shortRes = "N"
 	elseif conwayIndex < 10 then
 		-- standard nomenclature
 		res = NumberPrefixes.basePrefixes[conwayIndex] .. suffix
@@ -69,8 +70,6 @@ local function elaborateGroup(conwayIndex:number, suffix:string): (string, strin
 	end
 	if suffix == "illi" then
 		shortRes = shortRes .. "i"
-	elseif conwayIndex == 0 then
-		shortRes = "N"
 	end
 	return res, shortRes
 end
@@ -118,8 +117,8 @@ end
 -- a string that will be the result of the Conway's algorithm applied to it, and another string
 -- that will be the short rapresentation of the Conway-string. (like Million will be M)
 -- @return number -> the coefficient of the number, float with .3f and 1<=n<=999.999.
--- @return string -> the string rappresentation of the number by using Conway's algorithm.
--- @return string -> short rapresentation of the Conway-string.
+-- @return string -> the string representation of the number by using Conway's algorithm.
+-- @return string -> short representation of the Conway-string.
 function ScientificNotationClass:FormatNumberConway(): (number, string, string)
 	local expo = self.exponent
 	local coefficient = round3(self.mantissa * (10 ^ (expo%3)))
@@ -153,9 +152,9 @@ function ScientificNotationClass:FormatNumberConway(): (number, string, string)
 end
 
 -- Format the current Scientific Notation Object in a number (the coefficient),
--- a string that will rapresent the exponent.
+-- a string that will represent the exponent.
 -- @return number -> the coefficient of the number, float with .3f and 1<=n<=999.999.
--- @return string -> the string rappresentation of the number by using Conway's algorithm.
+-- @return string -> the string representation of the exponent.
 function ScientificNotationClass:FormatNumberScientific(): (number, string)
 	local expo = self.exponent
 	local coefficient = round3(self.mantissa * (10 ^ (expo%3)))
